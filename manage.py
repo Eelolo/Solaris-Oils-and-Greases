@@ -1,8 +1,10 @@
 from app import create_app
+from app import db
 
 
 app = create_app()
 
 
 if __name__ == '__main__':
+    print(dir(db))
     app.run(debug=True)
