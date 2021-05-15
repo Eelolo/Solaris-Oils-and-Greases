@@ -11,6 +11,9 @@ def create_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
     app.config['SECRET_KEY'] = 'secret-key-goes-here'
 
+    from .admin_views import admin_bp
+    app.register_blueprint(admin_bp)
+
     db.init_app(app)
 
     return app
