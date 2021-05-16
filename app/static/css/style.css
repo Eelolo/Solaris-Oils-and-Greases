@@ -21,6 +21,7 @@ table td {
 }
 .table-name h3 {
     display: block;
+    color: black;
 }
 
 .table-name button {
@@ -115,4 +116,24 @@ li.dropdown:hover > .dropdown-menu {
     text-align: center;
     padding-bottom: 10px;
     color: rgb(255, 255, 255);
+}
+
+
+.model-form {
+    width: 400px;
+    display: block;
+    margin: 0 auto;
+}
+
+.model-form input {
+    text-align: center;
+}
+
+.model-form .confirm-btns {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 30%;
+    padding-right: 30%;
+    padding-top: 3%
 }

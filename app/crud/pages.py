@@ -20,6 +20,14 @@ def get_all_pages():
 
     return pages
 
+def get_pages_data():
+    pages = get_all_pages()
+
+    data = []
+    for page in pages:
+        data.append((page.id, page.name))
+
+    return data
 
 def update_page(page_id, **kwargs):
     page = get_page(page_id)
