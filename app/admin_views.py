@@ -19,3 +19,4 @@ def admin():
         'admin_page.html',
         headers=headers, pages=pages, text=text, tables=tables,
     )
+
