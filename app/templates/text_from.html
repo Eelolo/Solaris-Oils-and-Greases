@@ -7,19 +7,17 @@
     <link rel="stylesheet" href="/static/css/bootstrap.min.css" >
     <link rel="stylesheet" href="/static/css/style.css">
 
-    <title>Create/Update Header</title>
+    <title>Create/Update Text</title>
 </head>
 <body>
     {% if data %}
-    {% set header = "Header Updating" %}
-    {% set tag = data[1] %}
-    {% set content = data[2] %}
-    {% set page_id = pages_ids.pop(pages_ids.index(data[3])) %}
+    {% set header = "Text Updating" %}
+    {% set content = data[1] %}
+    {% set page_id = pages_ids.pop(pages_ids.index(data[2])) %}
 
     {% set submit = "Update" %}
     {% else %}
     {% set header = "Header Creation" %}
-    {% set tag = "" %}
     {% set content = "" %}
     {% set page_id = pages_ids.pop(0) %}
 
@@ -31,12 +29,8 @@
 
     <form class="model-form" method="POST">
         <div class="form-group">
-            <label for="tag">Tag</label>
-            <input type="text" class="form-control" id="tag" name="tag" aria-describedby="tagHelp" placeholder="Enter header tag" value="{{ tag }}">
-        </div>
-        <div class="form-group">
             <label for="content">Content</label>
-            <input type="text" class="form-control" id="content" name="content" aria-describedby="tagHelp" placeholder="Header content" value="{{ content }}">
+            <textarea class="form-control" id="content" name="content" rows="3">{{ content }}</textarea>
         </div>
         <div class="form-group">
             <label for="page_id">Page id</label>
