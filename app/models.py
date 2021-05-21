@@ -24,9 +24,10 @@ class Headers(db.Model):
     page_id = db.Column(db.Integer, db.ForeignKey(Pages.id))
 
 
-    def __init__(self, tag, content):
+    def __init__(self, tag, content, page_id):
         self.tag = tag
         self.content = content
+        self.page_id = page_id
 
     def __repr__(self):
         return f"<Header {self.tag}>"
