@@ -21,6 +21,16 @@ def get_all_text():
     return text
 
 
+def get_text_data():
+    texts = get_all_text()
+
+    data = []
+    for text in texts:
+        data.append((text.id, text.content, text.page_id))
+
+    return data
+
+
 def update_text(text_id, **kwargs):
     text = get_text(text_id)
 

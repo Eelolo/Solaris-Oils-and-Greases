@@ -39,8 +39,9 @@ class Text(db.Model):
 
     page_id = db.Column(db.Integer, db.ForeignKey(Pages.id))
 
-    def __init__(self, content):
+    def __init__(self, content, page_id):
         self.content = content
+        self.page_id = page_id
 
     def __repr__(self):
         return f"<Text {self.id}>"
