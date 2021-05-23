@@ -132,6 +132,9 @@
             </thead>
             <tbody>
             {% for id, content, page_id in text %}
+                {% if content | length > 45 %}
+                {% set content = content[0:100] + "..." %}
+                {% endif %}
                 <tr>
                     <th scope="row">{{ id }}</th>
                     <td scope="row">{{ content }}</td>
@@ -172,17 +175,27 @@
                 <tr>
                     <th scope="col">id</th>
                     <th scope="col">Content</th>
+                    <th scope="col">Rows</th>
+                    <th scope="col">Columns</th>
                     <th scope="col">Page id</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
-            {% for id, content, page_id in tables %}
+            {% for id, content, rows, columns, page_id in tables %}
+                {% if (content | string) | length > 45 %}
+                {% set content = (content | string)[0:40] + "..." %}
+                {% endif %}
                 <tr>
                     <th scope="row">{{ id }}</th>
                     <td scope="row">{{ content }}</td>
+                    <td scope="row">{{ rows }}</td>
+                    <td scope="row">{{ columns }}</td>
                     <td scope="row">{{ page_id }}</td>
                     <td>
+                        <form action="table_look/{{ id }}/">
+                            <input type="submit" class="btn btn-outline-dark btn-sm" value="Look">
+                        </form>
                         <form action="update_table/{{ id }}/">
                             <input type="submit" class="btn btn-outline-dark btn-sm" value="Update">
                         </form>
@@ -195,7 +208,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="4">
+                    <td colspan="6">
                         <form action="create_table/">
                             <input type="submit" class="btn btn-outline-dark" value="Create">
                         </form>

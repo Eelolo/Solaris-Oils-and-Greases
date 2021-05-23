@@ -125,8 +125,15 @@ li.dropdown:hover > .dropdown-menu {
     margin: 0 auto;
 }
 
-.model-form input {
-    text-align: center;
+.model-form table {
+    width: 120vh;
+
+}
+
+.table-form {
+    display: flex;
+    align-items: center;
+    justify-content: center
 }
 
 .model-form .confirm-btns {
