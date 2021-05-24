@@ -3,9 +3,9 @@ from app.models import Tables
 import json
 
 
-def create_table(content, rows, columns, page_id):
+def create_table(content, rows, columns, page_id, page_index):
     content = json.dumps(content)
-    table = Tables(content, rows, columns, page_id)
+    table = Tables(content, rows, columns, page_id, page_index)
 
     db.session.add(table)
     db.session.commit()
@@ -42,8 +42,8 @@ def get_tables_data():
 
         data.append(
             (
-                table.id, content, table.rows,
-                table.columns, table.page_id
+                table.id, content, table.rows, table.columns,
+                table.page_id, table.page_index
             )
         )
 

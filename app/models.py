@@ -22,12 +22,13 @@ class Headers(db.Model):
     content = db.Column(db.String(100))
 
     page_id = db.Column(db.Integer, db.ForeignKey(Pages.id))
+    page_index = db.Column(db.Integer)
 
-
-    def __init__(self, tag, content, page_id):
+    def __init__(self, tag, content, page_id, page_index):
         self.tag = tag
         self.content = content
         self.page_id = page_id
+        self.page_index = page_index
 
     def __repr__(self):
         return f"<Header {self.tag}>"
@@ -38,10 +39,12 @@ class Text(db.Model):
     content = db.Column(db.String(100))
 
     page_id = db.Column(db.Integer, db.ForeignKey(Pages.id))
+    page_index = db.Column(db.Integer)
 
-    def __init__(self, content, page_id):
+    def __init__(self, content, page_id, page_index):
         self.content = content
         self.page_id = page_id
+        self.page_index = page_index
 
     def __repr__(self):
         return f"<Text {self.id}>"
@@ -53,12 +56,14 @@ class Tables(db.Model):
     rows = db.Column(db.Integer)
     columns = db.Column(db.Integer)
     page_id = db.Column(db.Integer, db.ForeignKey(Pages.id))
+    page_index = db.Column(db.Integer)
 
-    def __init__(self, content, rows, columns, page_id):
+    def __init__(self, content, rows, columns, page_id, page_index):
         self.content = content
         self.rows = rows
         self.columns = columns
         self.page_id = page_id
+        self.page_index = page_index
 
     def __repr__(self):
         return f"<Table {self.id}>"

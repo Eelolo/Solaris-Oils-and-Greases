@@ -17,12 +17,15 @@
     {% set rows = data[2] %}
     {% set columns = data[3] %}
     {% set page_id = pages_ids.pop(pages_ids.index(data[4])) %}
+    {% set page_index = data[5] %}
+
 
     {% set submit = "Update" %}
     {% else %}
     {% set header = "Table Creation" %}
     {% set content = "" %}
     {% set page_id = pages_ids.pop(0) %}
+    {% set page_index = "" %}
 
     {% set submit = "Create" %}
     {% endif %}
@@ -98,6 +101,10 @@
                 {% endfor %}
 
                 </select>
+            </div>
+            <div class="form-group">
+                <label for="page_index">Page index</label>
+                <input type="text" class="form-control" id="page_index" name="page_index" aria-describedby="tagHelp" placeholder="Page index" value="{{ page_index }}">
             </div>
             <div class="confirm-btns">
                 <input type="submit" class="btn btn-outline-dark" name="submit-btn" value="{{ submit }}">

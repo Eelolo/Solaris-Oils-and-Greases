@@ -2,8 +2,8 @@ from app import db
 from app.models import Text
 
 
-def create_text(content, page_id):
-    text = Text(content, page_id)
+def create_text(content, page_id, page_index):
+    text = Text(content, page_id, page_index)
 
     db.session.add(text)
     db.session.commit()
@@ -26,7 +26,7 @@ def get_text_data():
 
     data = []
     for text in texts:
-        data.append((text.id, text.content, text.page_id))
+        data.append((text.id, text.content, text.page_id, text.page_index))
 
     return data
 

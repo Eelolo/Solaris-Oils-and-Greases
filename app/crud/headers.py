@@ -2,8 +2,8 @@ from app import db
 from app.models import Headers
 
 
-def create_header(tag, content, page_id):
-    header = Headers(tag, content, page_id)
+def create_header(tag, content, page_id, page_index):
+    header = Headers(tag, content, page_id, page_index)
 
     db.session.add(header)
     db.session.commit()
@@ -25,7 +25,7 @@ def get_headers_data():
 
     data = []
     for header in headers:
-        data.append((header.id, header.tag, header.content, header.page_id))
+        data.append((header.id, header.tag, header.content, header.page_id, header.page_index))
 
 
     return data

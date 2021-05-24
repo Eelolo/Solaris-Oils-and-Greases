@@ -80,16 +80,18 @@
                     <th scope="col">Tag</th>
                     <th scope="col">Content</th>
                     <th scope="col">Page id</th>
+                    <th scope="col">Page index</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
-            {% for id, tag, content, page_id in headers %}
+            {% for id, tag, content, page_id, page_index in headers %}
                 <tr>
                     <th scope="row">{{ id }}</th>
                     <td scope="row">{{ tag }}</td>
                     <td scope="row">{{ content }}</td>
                     <td scope="row">{{ page_id }}</td>
+                    <td scope="row">{{ page_index }}</td>
                     <td>
                         <form action="update_header/{{ id }}/">
                             <input type="submit" class="btn btn-outline-dark btn-sm" value="Update">
@@ -103,7 +105,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="5">
+                    <td colspan="6">
                         <form action="create_header/">
                             <input type="submit" class="btn btn-outline-dark" value="Create">
                         </form>
@@ -127,11 +129,12 @@
                     <th scope="col">id</th>
                     <th scope="col">Content</th>
                     <th scope="col">Page id</th>
+                    <th scope="col">Page index</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
-            {% for id, content, page_id in text %}
+            {% for id, content, page_id, page_index in text %}
                 {% if content | length > 45 %}
                 {% set content = content[0:100] + "..." %}
                 {% endif %}
@@ -139,6 +142,7 @@
                     <th scope="row">{{ id }}</th>
                     <td scope="row">{{ content }}</td>
                     <td scope="row">{{ page_id }}</td>
+                    <td scope="row">{{ page_index }}</td>
                     <td>
                         <form action="update_text/{{ id }}/">
                             <input type="submit" class="btn btn-outline-dark btn-sm" value="Update">
@@ -152,7 +156,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="4">
+                    <td colspan="5">
                         <form action="create_text/">
                             <input type="submit" class="btn btn-outline-dark" value="Create">
                         </form>
@@ -178,11 +182,12 @@
                     <th scope="col">Rows</th>
                     <th scope="col">Columns</th>
                     <th scope="col">Page id</th>
+                    <th scope="col">Page index</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
-            {% for id, content, rows, columns, page_id in tables %}
+            {% for id, content, rows, columns, page_id, page_index in tables %}
                 {% if (content | string) | length > 45 %}
                 {% set content = (content | string)[0:40] + "..." %}
                 {% endif %}
@@ -192,6 +197,7 @@
                     <td scope="row">{{ rows }}</td>
                     <td scope="row">{{ columns }}</td>
                     <td scope="row">{{ page_id }}</td>
+                    <td scope="row">{{ page_index }}</td>
                     <td>
                         <form action="table_look/{{ id }}/">
                             <input type="submit" class="btn btn-outline-dark btn-sm" value="Look">
@@ -208,7 +214,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="6">
+                    <td colspan="7">
                         <form action="create_table/">
                             <input type="submit" class="btn btn-outline-dark" value="Create">
                         </form>
