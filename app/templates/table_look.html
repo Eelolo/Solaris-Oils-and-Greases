@@ -1,56 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
 
-    <meta tag="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css" >
-    <link rel="stylesheet" href="/static/css/style.css">
+  <meta tag="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/style.css">
 
-    <title>Create/Update Table</title>
+  <title>Create/Update Table</title>
 </head>
 <body>
-    {% if data %}
-    {% set table_content = data[1] %}
-    {% set rows = data[2] %}
-    {% set columns = data[3] %}
-    {% else %}
-    {% set content = "" %}
-    {% endif %}
+{% if data %}
+{% set table_content = data[1] %}
+{% set rows = data[2] %}
+{% set columns = data[3] %}
+{% else %}
+{% set content = "" %}
+{% endif %}
 
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-            {% for col in range(columns) %}
-            {% if table_content %}
-            {% set content = table_content[0][col] %}
-            {% else %}
-            {% set content = '' %}
-            {% endif %}
-                <th scope="col">
-                    {{ content }}
-                </th>
-            {% endfor %}
-            </tr>
-        </thead>
-        <tbody>
-            {% for row in range(1, rows) %}
-                <tr>
-                {% for col in range(columns) %}
-                {% if table_content %}
-                {% set content = table_content[row][col] %}
-                {% else %}
-                {% set content = '' %}
-                {% endif %}
-                    <th scope="row">
-                        {{ content }}
-                    </th>
-                {% endfor %}
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/static/js/bootstrap.min.js"></script>
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    {% for col in range(columns) %}
+    {% if table_content %}
+    {% set content = table_content[0][col] %}
+    {% else %}
+    {% set content = '' %}
+    {% endif %}
+    <th scope="col">
+      {{ content }}
+    </th>
+    {% endfor %}
+  </tr>
+  </thead>
+  <tbody>
+  {% for row in range(1, rows) %}
+  <tr>
+    {% for col in range(columns) %}
+    {% if table_content %}
+    {% set content = table_content[row][col] %}
+    {% else %}
+    {% set content = '' %}
+    {% endif %}
+    <th scope="row">
+      {{ content }}
+    </th>
+    {% endfor %}
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
 </body>
 </html>
