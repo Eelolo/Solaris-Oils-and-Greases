@@ -13,7 +13,7 @@
 <body class="bg-dark">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="#">Солярис</a>
+    <a class="navbar-brand" href="{{ url_for('main.index') }}">Солярис</a>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="#">Главная<span class="sr-only">(current)</span></a>
@@ -26,33 +26,31 @@
         <div class="dropdown-menu catalog-menu" aria-labelledby="navbarDropdownMenuLink">
           <div class="row">
             <div class="col">
-              <a class="dropdown-item" href="#">Авиационные масла</a>
-              <a class="dropdown-item" href="#">Индустриальные</a>
-              <a class="dropdown-item" href="#">Вакуумные масла</a>
-              <a class="dropdown-item" href="#">Моторные масла</a>
+              <a class="dropdown-item" href="{{ url_for('main.catalog_page', page_name = 'avia_oils') }}">Авиационные масла</a>
+              <a class="dropdown-item" href="{{ url_for('main.catalog_page', page_name = 'industrial_oils') }}">Индустриальные</a>
+              <a class="dropdown-item" href="{{ url_for('main.catalog_page', page_name = '') }}">Вакуумные масла</a>
+              <a class="dropdown-item" href="{{ url_for('main.catalog_page', page_name = 'motor_oils') }}">Моторные масла</a>
             </div>
             <div class="col">
-              <a class="dropdown-item" href="#">Приборные</a>
-              <a class="dropdown-item" href="#">Судовые масла</a>
-              <a class="dropdown-item" href="#">Трансмиссионые масла</a>
-              <a class="dropdown-item" href="#">Гидравлические масла</a>
+              <a class="dropdown-item" href="{{ url_for('main.catalog_page', page_name = 'pribornie_oils') }}">Приборные</a>
+              <a class="dropdown-item" href="{{ url_for('main.catalog_page', page_name = 'ships_oils') }}">Судовые масла</a>
+              <a class="dropdown-item" href="{{ url_for('main.catalog_page', page_name = 'transmission_oils') }}">Трансмиссионые масла</a>
+              <a class="dropdown-item" href="{{ url_for('main.catalog_page', page_name = 'gidravl_oils') }}">Гидравлические масла</a>
             </div>
             <div class="col">
-              <a class="dropdown-item" href="#">Кабельные и трансформаторные масла</a>
-              <a class="dropdown-item" href="#">Турбинные масла</a>
-              <a class="dropdown-item" href="#">Компрессорные масла</a>
-              <a class="dropdown-item" href="#">Смазка</a>
+              <a class="dropdown-item" href="{{ url_for('main.catalog_page', page_name = 'cabel_transform_oils') }}">Кабельные и трансформаторные масла</a>
+              <a class="dropdown-item" href="{{ url_for('main.catalog_page', page_name = 'turbo_oils') }}">Турбинные масла</a>
+              <a class="dropdown-item" href="{{ url_for('main.catalog_page', page_name = 'compress_oils') }}">Компрессорные масла</a>
+              <a class="dropdown-item" href="{{ url_for('main.catalog_page', page_name = 'antifrict_oils') }}">Смазки</a>
             </div>
             <div class="col">
-              <a class="dropdown-item" href="#">Специльные жидкости</a>
+              <a class="dropdown-item" href="{{ url_for('main.catalog_page', page_name = 'special_fluids') }}">Специльные жидкости</a>
             </div>
           </div>
         </div>
       </li>
-
-
       <li class="nav-item active">
-        <a class="nav-link" href="#">Прайс-лист</a>
+        <a class="nav-link" href="{{ url_for('main.catalog_page', page_name = 'price_list') }}">Прайс-лист</a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="#">Контакты</a>
