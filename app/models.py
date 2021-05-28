@@ -7,6 +7,7 @@ class Pages(db.Model):
 
     headers = db.relationship('Headers', backref='page')
     text = db.relationship('Text', backref='page')
+    lists = db.relationship('Lists', backref='page')
     tables = db.relationship('Tables', backref='page')
 
     def __init__(self, name):
@@ -48,6 +49,25 @@ class Text(db.Model):
 
     def __repr__(self):
         return f"<Text {self.id}>"
+
+
+class Lists(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    label = db.Column(db.String(1000))
+    content = db.Column(db.String(10000))
+    rows = db.Column(db.Integer)
+    page_id = db.Column(db.Integer, db.ForeignKey(Pages.id))
+    page_index = db.Column(db.Integer)
+
+    def __init__(self, label, content, rows, page_id, page_index):
+        self.label = label
+        self.content = content
+        self.rows = rows
+        self.page_id = page_id
+        self.page_index = page_index
+
+    def __repr__(self):
+        return f"<List {self.id}>"
 
 
 class Tables(db.Model):

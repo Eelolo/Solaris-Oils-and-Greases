@@ -23,7 +23,7 @@ def get_all_tables():
     return tables
 
 
-def loads_table_content(table):
+def load_table_content(table):
     # ЗДЕСЬ ОШИБКА РАЗБЕЗРИСЬ
     # content = str(table.content).strip("'<>() ").replace('\'', '\"')
     # content = json.loads(content.encode('utf8'))
@@ -38,7 +38,7 @@ def get_tables_data():
 
     data = []
     for table in tables:
-        content = loads_table_content(table)
+        content = load_table_content(table)
 
         data.append(
             (

@@ -3,9 +3,10 @@ from .crud.headers import get_headers_data, create_header, get_header, update_he
 from .crud.pages import get_page, create_page, update_page, delete_page, get_pages_data, get_pages_ids
 from .crud.tables import (
     get_tables_data, create_table, get_table, update_table, delete_table,
-    change_table_format, get_table_from_form, loads_table_content
+    change_table_format, get_table_from_form, load_table_content
 )
 from .crud.text import get_text_data, create_text, get_text, update_text, delete_text
+from .crud.lists import get_lists_data, get_list_from_form, load_list_content, create_list, get_list, update_list, delete_list
 
 
 admin_bp = Blueprint('admin', __name__, url_prefix='/admin')
@@ -16,11 +17,12 @@ def admin():
     headers = get_headers_data()
     pages = get_pages_data()
     text = get_text_data()
+    lists = get_lists_data()
     tables = get_tables_data()
 
     return render_template(
         'admin_page.html',
-        headers=headers, pages=pages, text=text, tables=tables,
+        headers=headers, pages=pages, text=text, lists=lists, tables=tables,
     )
 
 
@@ -172,6 +174,98 @@ def admin_delete_text(text_id):
     return redirect('/admin')
 
 
+@admin_bp.route('/create_list/', methods=['GET', 'POST'])
+def admin_create_list():
+    pages_ids = get_pages_ids()
+    label = ''
+    rows = 4
+
+    if request.method == 'POST':
+        if request.form.get('submit-btn') == 'Create':
+            page_id = request.form.get('page_select')
+            label = request.form.get('label')
+            rows = int(request.form.get('rows'))
+            page_index = request.form.get('page_index')
+
+            content = get_list_from_form(request.form)
+
+            if rows and label and content and page_index:
+                create_list(label, content, rows, page_id, page_index)
+
+            flash('List created')
+
+        if request.form.get('format-btn'):
+            rows = change_list_rows(request.form)
+            form = dict(request.form)
+            form['rows'] = rows
+            label = form['label']
+            list_content = get_list_from_form(form)
+
+            return render_template(
+                'list_form.html', label=label, list_content=list_content, rows=rows, pages_ids=pages_ids,
+            )
+
+        return redirect('/admin')
+
+    return render_template('list_form.html', pages_ids=pages_ids, label=label, rows=rows)
+
+
+@admin_bp.route('/list_look/<list_id>/')
+def admin_list_look(list_id):
+    list = get_list(list_id)
+    content = load_list_content(list)
+    data = list.label, content, list.rows
+
+    return render_template('list_look.html', data=data)
+
+
+@admin_bp.route('/update_list/<list_id>/', methods=['GET', 'POST'])
+def admin_update_list(list_id):
+    pages_ids = get_pages_ids()
+    list = get_list(list_id)
+    content = load_list_content(list)
+    data = list.id, list.label, content, list.rows, list.page_id, list.page_index
+
+    if request.method == 'POST':
+        if request.form.get('submit-btn') == 'Update':
+            page_id = request.form.get('page_select')
+            label = request.form.get('label')
+            rows = int(request.form.get('rows'))
+            page_index = request.form.get('page_index')
+
+            content = get_list_from_form(request.form)
+
+            if rows and label and content and page_index:
+                update_list(
+                    list_id, label=label, content=content,
+                    rows=rows, page_id=page_id, page_index=page_index
+                )
+
+            flash(f'List {data[0]} updated')
+
+        if request.form.get('format-btn'):
+            rows = change_list_rows(request.form)
+            form = dict(request.form)
+            form['rows'] = rows
+            list_content = get_list_from_form(form)
+            data = list.id, list.label, list_content, rows, list.page_id, list.page_index
+
+            return render_template('list_form.html', data=data, pages_ids=pages_ids)
+
+        return redirect('/admin')
+
+    return render_template('list_form.html', data=data, pages_ids=pages_ids)
+
+
+@admin_bp.route('/delete_list/<list_id>/')
+def admin_delete_list(list_id):
+    list = get_list(list_id)
+    delete_list(list_id)
+
+    flash(f'list {list.id} deleted')
+    return redirect('/admin')
+
+
 @admin_bp.route('/create_table/', methods=['GET', 'POST'])
 def admin_create_table():
     pages_ids = get_pages_ids()
@@ -212,7 +306,7 @@ def admin_create_table():
 @admin_bp.route('/table_look/<table_id>/')
 def admin_table_look(table_id):
     table = get_table(table_id)
-    content = loads_table_content(table)
+    content = load_table_content(table)
     data = table.id, content, table.rows, table.columns, table.page_id, table.page_index
 
     return render_template('table_look.html', data=data)
@@ -222,7 +316,7 @@ def admin_table_look(table_id):
 def admin_update_table(table_id):
     pages_ids = get_pages_ids()
     table = get_table(table_id)
-    content = loads_table_content(table)
+    content = load_table_content(table)
     data = table.id, content, table.rows, table.columns, table.page_id, table.page_index
 
     if request.method == 'POST':
@@ -291,6 +385,27 @@ def change_format(form, table_id=None):
             change_table_format(table_id, rows=table.columns - 1)
 
     return rows, columns
+
+
+def change_list_rows(form, list_id=None):
+    if list_id:
+        list = get_list(list_id)
+
+    rows = int(form.get('rows'))
+
+    if request.form.get('format-btn') == 'Add Row':
+        rows += 1
+
+        if list_id:
+            change_table_format(list_id, rows=list.rows + 1)
+
+    if request.form.get('format-btn') == 'Delete Row':
+        rows -= 1
+
+        if list_id:
+            change_table_format(list_id, rows=list.rows - 1)
+
+    return rows
 
 
 @admin_bp.route('/delete_table/<table_id>/')

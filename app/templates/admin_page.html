@@ -167,6 +167,64 @@
 </div>
 <div class="container">
   <div class="table-name">
+    <h3>Lists</h3>
+  </div>
+  <div class="table-name">
+    <button type="button" class="btn btn-outline-dark btn-sm" data-toggle="collapse" data-target="#collapse-lists">
+      Hide/Show
+    </button>
+  </div>
+  <table class="table collapse in" id="collapse-lists">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Label</th>
+      <th scope="col">Content</th>
+      <th scope="col">Rows</th>
+      <th scope="col">Page id</th>
+      <th scope="col">Page index</th>
+      <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for id, label, content, rows, page_id, page_index in lists %}
+    {% if (content | string) | length > 45 %}
+    {% set content = (content | string)[0:40] + "..." %}
+    {% endif %}
+    <tr>
+      <td scope="row">{{ id }}</td>
+      <td scope="row">{{ label }}</td>
+      <td scope="row">{{ content }}</td>
+      <td scope="row">{{ rows }}</td>
+      <td scope="row">{{ page_id }}</td>
+      <td scope="row">{{ page_index }}</td>
+      <td>
+        <form action="list_look/{{ id }}/">
+          <input type="submit" class="btn btn-outline-dark btn-sm" value="Look">
+        </form>
+        <form action="update_list/{{ id }}/">
+          <input type="submit" class="btn btn-outline-dark btn-sm" value="Update">
+        </form>
+        <form action="delete_list/{{ id }}/">
+          <input type="submit" class="btn btn-outline-dark btn-sm" value="Delete">
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    <tfoot>
+    <tr>
+      <td colspan="7">
+        <form action="create_list/">
+          <input type="submit" class="btn btn-outline-dark" value="Create">
+        </form>
+      </td>
+    </tr>
+    </tfoot>
+  </table>
+</div>
+<div class="container">
+  <div class="table-name">
     <h3>Tables</h3>
   </div>
   <div class="table-name">
@@ -223,7 +281,6 @@
     </tfoot>
   </table>
 </div>
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="/static/js/bootstrap.min.js"></script>

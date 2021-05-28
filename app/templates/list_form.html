@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta tag="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+
+  <title>Create/Update Table</title>
+</head>
+<body>
+{% if data %}
+{% set header = "List Updating" %}
+{% set id = data[0] %}
+{% set label = data[1] %}
+{% set list_content = data[2] %}
+{% set rows = data[3] %}
+{% set page_id = pages_ids.pop(pages_ids.index(data[4])) %}
+{% set page_index = data[5] %}
+
+
+{% set submit = "Update" %}
+{% else %}
+{% set header = "List Creation" %}
+{% set content = "" %}
+{% set page_id = pages_ids.pop(0) %}
+{% set page_index = "" %}
+
+{% set submit = "Create" %}
+{% endif %}
+
+<h1>{{ header }}</h1>
+
+<form class="model-form" method="POST">
+  <div class="form-group">
+    <label>Content</label>
+    <div>
+      <label>
+        <input type="text" class="form-control" id="label" name="label" placeholder="Enter text" value="{{ label }}">
+      </label>
+    </div>
+    <ul>
+      {% for row in range(rows) %}
+        {% if list_content %}
+          {% set content = list_content[row] %}
+        {% else %}
+          {% set content = '' %}
+        {% endif %}
+      <li>
+        <div>
+          <input type="text" class="form-control" id="row" name="row-{{ row }}" placeholder="Enter text" value="{{ content }}">
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+        <input type="submit" class="btn btn-outline-dark" id="add-row" name="format-btn" value="Add Row">
+        <input type="submit" class="btn btn-outline-dark" id="delete-row" name="format-btn" value="Delete Row">
+    </div>
+    <div>
+      <label for="rows">Rows</label>
+      <input type="text" class="form-control" id="rows" name="rows" placeholder="Enter number of rows"
+             value="{{ rows }}">
+    </div>
+    <div>
+      <label for="page_id">Page id</label>
+      <select class="form-control" id="page_id" name="page_select">
+
+        <option selected="selected">{{ page_id }}</option>
+        {% for page_id in pages_ids %}
+        <option>{{ page_id }}</option>
+        {% endfor %}
+
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="page_index">Page index</label>
+      <input type="text" class="form-control" id="page_index" name="page_index" aria-describedby="tagHelp"
+             placeholder="Page index" value="{{ page_index }}">
+    </div>
+    <div class="confirm-btns">
+      <input type="submit" class="btn btn-outline-dark" name="submit-btn" value="{{ submit }}">
+      <input type="submit" class="btn btn-outline-dark" name="submit-btn" value="Cancel">
+    </div>
+</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+</body>
+</html>

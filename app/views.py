@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect
 from .models import Headers, Text, Tables, Pages
-from .crud.tables import loads_table_content
+from .crud.tables import load_table_content
 
 
 main_bp = Blueprint('main', __name__)
@@ -22,7 +22,7 @@ def site_page(page_name):
     tables = Tables.query.filter_by(page_id=page_id).all()
 
     for table in tables:
-        content = loads_table_content(table)
+        content = load_table_content(table)
         table.content = content
 
     elements = headers + text + tables
