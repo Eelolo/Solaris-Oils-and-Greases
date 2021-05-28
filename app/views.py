@@ -1,6 +1,7 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, redirect
 from .models import Headers, Text, Tables, Pages
 from .crud.tables import loads_table_content
+
 
 main_bp = Blueprint('main', __name__)
 
@@ -11,7 +12,10 @@ def index():
 
 
 @main_bp.route('/<page_name>/')
-def catalog_page(page_name):
+def site_page(page_name):
+    if page_name == 'favicon.ico':
+        return redirect('/favicon.ico')
+
     page_id = Pages.query.filter_by(name=page_name).one().id
     headers = Headers.query.filter_by(page_id=page_id).all()
     text = Text.query.filter_by(page_id=page_id).all()
@@ -33,4 +37,4 @@ def catalog_page(page_name):
         if isinstance(elem, Tables):
             data.append(('table', elem))
 
-    return render_template('catalog_page.html', data=data)
+    return render_template('site_page.html', data=data)

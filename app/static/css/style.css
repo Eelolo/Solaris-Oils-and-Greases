@@ -145,7 +145,7 @@ li.dropdown:hover > .dropdown-menu {
     padding-top: 3%
 }
 
-.table-main tr th {
+.table_main tr td,th {
     color: rgb(200, 200, 200);
     border: 1px solid rgba(255, 193, 7, 0.3);
     text-align: center;
@@ -153,6 +153,10 @@ li.dropdown:hover > .dropdown-menu {
     font-size: 15px;
 }
 
-.table-main thead tr th {
+.thead {
     background: rgba(255, 193, 7, 0.3);
+}
+
+.table_main {
+    margin-bottom: 15px;
 }

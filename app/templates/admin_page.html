@@ -40,7 +40,7 @@
     <tbody>
     {% for id, name in pages %}
     <tr>
-      <th scope="row">{{ id }}</th>
+      <td scope="row">{{ id }}</td>
       <td scope="row">{{ name }}</td>
       <td>
         <form action="update_page/{{ id }}/">
@@ -87,7 +87,7 @@
     <tbody>
     {% for id, tag, content, page_id, page_index in headers %}
     <tr>
-      <th scope="row">{{ id }}</th>
+      <td scope="row">{{ id }}</td>
       <td scope="row">{{ tag }}</td>
       <td scope="row">{{ content }}</td>
       <td scope="row">{{ page_id }}</td>
@@ -139,7 +139,7 @@
     {% set content = content[0:100] + "..." %}
     {% endif %}
     <tr>
-      <th scope="row">{{ id }}</th>
+      <td scope="row">{{ id }}</td>
       <td scope="row">{{ content }}</td>
       <td scope="row">{{ page_id }}</td>
       <td scope="row">{{ page_index }}</td>
@@ -192,7 +192,7 @@
     {% set content = (content | string)[0:40] + "..." %}
     {% endif %}
     <tr>
-      <th scope="row">{{ id }}</th>
+      <td scope="row">{{ id }}</td>
       <td scope="row">{{ content }}</td>
       <td scope="row">{{ rows }}</td>
       <td scope="row">{{ columns }}</td>

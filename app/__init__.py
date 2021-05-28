@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -18,5 +18,7 @@ def create_app():
     app.register_blueprint(main_bp)
 
     db.init_app(app)
+
+    app.jinja_options['extensions'].append('jinja2.ext.loopcontrols')
 
     return app

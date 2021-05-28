@@ -26,31 +26,31 @@
         <div class="dropdown-menu catalog-menu" aria-labelledby="navbarDropdownMenuLink">
           <div class="row">
             <div class="col">
-              <a class="dropdown-item" href="{{ url_for('main.catalog_page', page_name = 'avia_oils') }}">Авиационные масла</a>
-              <a class="dropdown-item" href="{{ url_for('main.catalog_page', page_name = 'industrial_oils') }}">Индустриальные</a>
-              <a class="dropdown-item" href="{{ url_for('main.catalog_page', page_name = '') }}">Вакуумные масла</a>
-              <a class="dropdown-item" href="{{ url_for('main.catalog_page', page_name = 'motor_oils') }}">Моторные масла</a>
+              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'aviation_oils') }}">Авиационные масла</a>
+              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'industrial_oils') }}">Индустриальные масла</a>
+              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'vacuum_oils') }}">Вакуумные масла</a>
+              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'engine_oils') }}">Моторные масла</a>
             </div>
             <div class="col">
-              <a class="dropdown-item" href="{{ url_for('main.catalog_page', page_name = 'pribornie_oils') }}">Приборные</a>
-              <a class="dropdown-item" href="{{ url_for('main.catalog_page', page_name = 'ships_oils') }}">Судовые масла</a>
-              <a class="dropdown-item" href="{{ url_for('main.catalog_page', page_name = 'transmission_oils') }}">Трансмиссионые масла</a>
-              <a class="dropdown-item" href="{{ url_for('main.catalog_page', page_name = 'gidravl_oils') }}">Гидравлические масла</a>
+              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'instrument_oils') }}">Приборные масла</a>
+              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'ships_oils') }}">Судовые масла</a>
+              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'transmission_oils') }}">Трансмиссионые масла</a>
+              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'hydraulic_oils') }}">Гидравлические масла</a>
             </div>
             <div class="col">
-              <a class="dropdown-item" href="{{ url_for('main.catalog_page', page_name = 'cabel_transform_oils') }}">Кабельные и трансформаторные масла</a>
-              <a class="dropdown-item" href="{{ url_for('main.catalog_page', page_name = 'turbo_oils') }}">Турбинные масла</a>
-              <a class="dropdown-item" href="{{ url_for('main.catalog_page', page_name = 'compress_oils') }}">Компрессорные масла</a>
-              <a class="dropdown-item" href="{{ url_for('main.catalog_page', page_name = 'antifrict_oils') }}">Смазки</a>
+              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'cable_and_transformer_oils') }}">Кабельные и трансформаторные масла</a>
+              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'turbine_oils') }}">Турбинные масла</a>
+              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'compressor_oils') }}">Компрессорные масла</a>
+              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'greases') }}">Смазки</a>
             </div>
             <div class="col">
-              <a class="dropdown-item" href="{{ url_for('main.catalog_page', page_name = 'special_fluids') }}">Специльные жидкости</a>
+              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'special_liquids') }}">Специльные жидкости</a>
             </div>
           </div>
         </div>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="{{ url_for('main.catalog_page', page_name = 'price_list') }}">Прайс-лист</a>
+        <a class="nav-link" href="{{ url_for('main.site_page', page_name = 'price_list') }}">Прайс-лист</a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="#">Контакты</a>
