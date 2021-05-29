@@ -55,12 +55,12 @@ li.dropdown:hover > .dropdown-menu {
     float: none;
 }
 
-.navbar .dropdown .dropdown-menu.catalog-menu{
+.navbar .dropdown .dropdown-menu.catalog-menu {
     width: 60%;
     background: rgb(52, 58, 64);
     left: 50% !important;
     right: auto;
-    transform: translate(-50%, -7%);
+    transform: translate(-50%, -13%);
 }
 
 .dropdown a {
@@ -159,4 +159,45 @@ li.dropdown:hover > .dropdown-menu {
 
 .table_main {
     margin-bottom: 15px;
+}
+
+.nav-link{
+	position: relative;
+	color: #00a650;
+	cursor: pointer;
+	line-height: 1;
+	text-decoration: none;
+
+}
+.nav-link:after {
+	display: block;
+	position: absolute;
+	left: 0;
+	width: 0;
+	height: 2px;
+	background-color: rgba(255, 193, 7);
+	content: "";
+	transition: width 0.3s ease-out;
+	margin-top: 3px;
+}
+
+.nav-link:hover:after,
+.nav-link:focus:after {
+	width: 100%;
+}
+
+.catalog:hover .dropdown-active:after {
+	width: 100%;
+}
+
+.navbar {
+    margin: 0px -20px 0px;
+    outline: 1px solid rgba(255, 193, 7,0.8);
+    outline-offset: -5px;
+}
+
+.dropdown-menu {
+    outline: 1px solid rgba(255, 193, 7,0.8);
+    outline-offset: -5px;
+    padding: 7px;
 }

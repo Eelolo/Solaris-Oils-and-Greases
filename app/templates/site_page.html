@@ -12,16 +12,15 @@
   <title>Title</title>
 </head>
 <body class="bg-dark">
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
     <a class="navbar-brand" href="{{ url_for('main.index') }}">Солярис</a>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Главная<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{{ url_for('main.index') }}">Главная<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown catalog">
-        <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link active dropdown-active" id="navbarDropdownMenuLink">
           Каталог
         </a>
         <div class="dropdown-menu catalog-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -54,7 +53,7 @@
         <a class="nav-link" href="{{ url_for('main.site_page', page_name = 'price_list') }}">Прайс-лист</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">Контакты</a>
+        <a class="nav-link">Контакты</a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="{{ url_for('main.site_page', page_name = 'partner_card') }}">Карта партнера</a>
