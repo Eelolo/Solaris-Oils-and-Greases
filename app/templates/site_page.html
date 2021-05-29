@@ -103,6 +103,29 @@
       <p>{{ content }}</p>
       {% endif %}
 
+      {% if elem[0] == 'list' %}
+        {% set label = elem[1].label %}
+        {% set content = elem[1].content %}
+        {% set rows = elem[1].rows %}
+      <div class="container">
+        <div>
+          <label>{{ label }}</label>
+        </div>
+        <ul>
+        {% for row in range(rows) %}
+          {% if content %}
+            {% set content = content[row] %}
+          {% else %}
+            {% set content = '' %}
+          {% endif %}
+          <li>
+            {{ content }}
+          </li>
+        {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
       {% if elem[0] == 'table' %}
         {% set table_content = elem[1].content %}
         {% set rows = elem[1].rows %}
