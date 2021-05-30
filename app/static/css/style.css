@@ -239,3 +239,26 @@ li.dropdown:hover > .dropdown-menu {
     display: inline-block;
     margin: 0px 50px 0px 50px;
 }
+
+*::selection{
+    color: rgb(214, 166, 19);
+    background: rgb(42, 48, 54);
+}
+
+.dropdown-item:active {
+    background-color: rgb(214, 166, 19);
+}
+
+input[type=search], textarea {
+  -webkit-transition: all 0.10s ease-in-out;
+  -moz-transition: all 0.10s ease-in-out;
+  -ms-transition: all 0.10s ease-in-out;
+  -o-transition: all 0.10s ease-in-out;
+  outline: none;
+  border: 1px solid #DDDDDD;
+}
+
+input[type=search]:focus, textarea:focus {
+  box-shadow: 0 0 5px rgba(214, 166, 19, 1);
+  border: 1px solid rgba(214, 166, 19, 1);
+}
