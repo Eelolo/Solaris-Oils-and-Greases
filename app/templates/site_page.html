@@ -74,95 +74,104 @@
       <h3>Масла, Смазки, Технические жидкости</h3>
     </div>
   </div>
-  <div class="container">
-    <div class="row justify-content-md-center">
-      <div class="col gray-bg">
-        <h3>Доступные цены</h3>
-        <h3>Гибкая система расчетов</h3>
-      </div>
-      <div class="col gray-bg">
-        <h3>Все формы работы</h3>
-        <h3>Оперативность исполнения</h3>
-      </div>
-    </div>
-  </div>
 </div>
-
 <div class="container">
   <div class="main main-raised">
-    {% for elem in data %}
-      {% if elem[0] == 'header' %}
-        {% set tag = elem[1].tag %}
-        {% set content = elem[1].content %}
-        <{{ tag }}>{{ content }}</{{ tag }}>
-      {% endif %}
-
-      {% if elem[0] == 'text' %}
-        {% set content = elem[1].content %}
-      <p>{{ content }}</p>
-      {% endif %}
-
-      {% if elem[0] == 'list' %}
-        {% set label = elem[1].label %}
-        {% set content = elem[1].content %}
-        {% set rows = elem[1].rows %}
-      <div class="container">
-        <div>
-          <label>{{ label }}</label>
-        </div>
-        <ul>
-        {% for row in range(rows) %}
-          {% if content %}
-            {% set content = content[row] %}
-          {% else %}
-            {% set content = '' %}
-          {% endif %}
-          <li>
-            {{ content }}
-          </li>
-        {% endfor %}
-        </ul>
+    <div class="row advantages-row">
+      <div class="col advantage advantage-0">
+        <img src="/static/imgs/reasonable_prices.png" alt="" style="width: 50px; height: 50px;">
+        <h4>Доступные цены</h4>
       </div>
-      {% endif %}
+      <div class="col advantage advantage-1">
+        <img src="/static/imgs/flexible_settlement.png" alt="" style="width: 50px; height: 50px;">
+        <h4>Гибкая система расчетов</h4>
+      </div>
+    </div>
+    <div class="row advantages-row">
+      <div class="col advantage advantage-2">
+        <img src="/static/imgs/all_work_forms.png" alt="" style="width: 50px; height: 50px;">
+        <h4>Все формы работы</h4>
+      </div>
+      <div class="col advantage advantage-3">
+        <img src="/static/imgs/efficiency.png" alt="" style="width: 50px; height: 50px;">
+        <h4>Оперативность исполнения</h4>
+      </div>
+    </div>
+    <div class="content">
+      <div class="container">
+      {% for elem in data %}
+        {% if elem[0] == 'header' %}
+          {% set tag = elem[1].tag %}
+          {% set content = elem[1].content %}
+          <{{ tag }}>{{ content }}</{{ tag }}>
+        {% endif %}
 
-      {% if elem[0] == 'table' %}
-        {% set table_content = elem[1].content %}
-        {% set rows = elem[1].rows %}
-        {% set columns = elem[1].columns %}
-      <table class="table_main">
-        <tbody>
-        {% for row in range(rows) %}
-        <tr>
-          {% for col in range(columns) %}
-            {% if table_content[row][col] %}
-              {% set content = table_content[row][col]['value'] %}
+        {% if elem[0] == 'text' %}
+          {% set content = elem[1].content %}
+        <p>{{ content }}</p>
+        {% endif %}
+
+        {% if elem[0] == 'list' %}
+          {% set label = elem[1].label %}
+          {% set content = elem[1].content %}
+          {% set rows = elem[1].rows %}
+        <div class="container">
+          <div>
+            <label>{{ label }}</label>
+          </div>
+          <ul>
+          {% for row in range(rows) %}
+            {% if content %}
+              {% set content = content[row] %}
             {% else %}
-            {% continue %}
+              {% set content = '' %}
             {% endif %}
-            {% if 'colspan' in table_content[row][col] %}
-              {% set colspan = table_content[row][col]['colspan'] %}
-            {% else %}
-              {% set colspan = 1 %}
-            {% endif %}
-            {% if 'rowspan' in table_content[row][col] %}
-              {% set rowspan = table_content[row][col]['rowspan'] %}
-            {% else %}
-              {% set rowspan = 1 %}
-            {% endif %}
-            {% if row == 0 %}
-          <td class="thead" colspan="{{ colspan }}" rowspan="{{ rowspan }}">{{ content }}</td>
-            {% else %}
-          <td colspan="{{ colspan }}" rowspan="{{ rowspan }}">{{ content }}</td>
-            {% endif %}
+            <li>
+              {{ content }}
+            </li>
           {% endfor %}
-        </tr>
-        {% endfor %}
-        </tbody>
-      </table>
-      {% endif %}
-    {% endfor %}
-  </div>
+          </ul>
+        </div>
+        {% endif %}
 
+        {% if elem[0] == 'table' %}
+          {% set table_content = elem[1].content %}
+          {% set rows = elem[1].rows %}
+          {% set columns = elem[1].columns %}
+        <table class="table_main">
+          <tbody>
+          {% for row in range(rows) %}
+            <tr>
+            {% for col in range(columns) %}
+              {% if table_content[row][col] %}
+                {% set content = table_content[row][col]['value'] %}
+              {% else %}
+              {% continue %}
+              {% endif %}
+              {% if 'colspan' in table_content[row][col] %}
+                {% set colspan = table_content[row][col]['colspan'] %}
+              {% else %}
+                {% set colspan = 1 %}
+              {% endif %}
+              {% if 'rowspan' in table_content[row][col] %}
+                {% set rowspan = table_content[row][col]['rowspan'] %}
+              {% else %}
+                {% set rowspan = 1 %}
+              {% endif %}
+              {% if row == 0 %}
+              <td class="thead" colspan="{{ colspan }}" rowspan="{{ rowspan }}">{{ content }}</td>
+              {% else %}
+              <td colspan="{{ colspan }}" rowspan="{{ rowspan }}">{{ content }}</td>
+              {% endif %}
+            {% endfor %}
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+        {% endif %}
+      {% endfor %}
+      </div>
+    </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="/static/js/bootstrap.min.js"></script>
 </body>
