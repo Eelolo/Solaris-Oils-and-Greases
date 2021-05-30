@@ -45,4 +45,4 @@ def site_page(page_name):
         if isinstance(elem, Tables):
             data.append(('table', elem))
 
-    return render_template('site_page.html', data=data)
+    return render_template('site_page.html', data=data, page_name=page_name)
