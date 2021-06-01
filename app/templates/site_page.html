@@ -1,178 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
+{% extends "base.html" %}
 
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport'/>
-  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/static/css/style.css">
-  <link rel="shortcut icon" href="{{ url_for('static', filename='imgs/favicon.ico') }}">
+{% block head %}
+{% include 'blocks/head.html' %}
+{% endblock %}
 
-  <title>{{ page_name }}</title>
-</head>
-<body class="bg-dark">
-<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <a class="navbar-brand" href="{{ url_for('main.index') }}">Солярис</a>
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="{{ url_for('main.index') }}">Главная<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item dropdown catalog">
-        <a class="nav-link active dropdown-active" id="navbarDropdownMenuLink">
-          Каталог
-        </a>
-        <div class="dropdown-menu catalog-menu" aria-labelledby="navbarDropdownMenuLink">
-          <div class="row">
-            <div class="col">
-              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'aviation_oils') }}">Авиационные масла</a>
-              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'industrial_oils') }}">Индустриальные масла</a>
-              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'vacuum_oils') }}">Вакуумные масла</a>
-              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'engine_oils') }}">Моторные масла</a>
-            </div>
-            <div class="col">
-              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'instrument_oils') }}">Приборные масла</a>
-              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'ships_oils') }}">Судовые масла</a>
-              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'transmission_oils') }}">Трансмиссионые масла</a>
-              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'hydraulic_oils') }}">Гидравлические масла</a>
-            </div>
-            <div class="col">
-              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'cable_and_transformer_oils') }}">Кабельные и трансформаторные масла</a>
-              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'turbine_oils') }}">Турбинные масла</a>
-              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'compressor_oils') }}">Компрессорные масла</a>
-              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'greases') }}">Смазки</a>
-            </div>
-            <div class="col">
-              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'special_liquids') }}">Специльные жидкости</a>
-            </div>
-          </div>
-        </div>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="{{ url_for('main.site_page', page_name = 'price_list') }}">Прайс-лист</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link">Контакты</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="{{ url_for('main.site_page', page_name = 'partner_card') }}">Карта партнера</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Поиск" aria-label="Search">
-      <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Поиск</button>
-    </form>
-  </div>
-</nav>
+{% block navigation %}
+{% include 'blocks/navigation.html' %}
+{% endblock %}
 
-<div class="page-header" data-parallax="true"
-     style="background-image: url('/static/imgs/page-header-bg.jpg'); height: 770px;">
-  <div class="d-flex justify-content-center">
-    <div class="brand gray-bg">
-      <h1>Компания Солярис</h1>
-      <h3>Масла, Смазки, Технические жидкости</h3>
-    </div>
-  </div>
-</div>
-<div class="container">
-  <div class="main main-raised">
-    <div class="row advantages-row">
-      <div class="col advantage advantage-0">
-        <img src="/static/imgs/reasonable_prices.png" alt="" style="width: 50px; height: 50px;">
-        <h4>Доступные цены</h4>
-      </div>
-      <div class="col advantage advantage-1">
-        <img src="/static/imgs/flexible_settlement.png" alt="" style="width: 50px; height: 50px;">
-        <h4>Гибкая система расчетов</h4>
-      </div>
-    </div>
-    <div class="row advantages-row">
-      <div class="col advantage advantage-2">
-        <img src="/static/imgs/all_work_forms.png" alt="" style="width: 50px; height: 50px;">
-        <h4>Все формы работы</h4>
-      </div>
-      <div class="col advantage advantage-3">
-        <img src="/static/imgs/efficiency.png" alt="" style="width: 50px; height: 50px;">
-        <h4>Оперативность исполнения</h4>
-      </div>
-    </div>
-    <div class="content">
-      <div class="container">
-      {% for elem in data %}
-        {% if elem[0] == 'header' %}
-          {% set tag = elem[1].tag %}
-          {% set content = elem[1].content %}
-          <{{ tag }}>{{ content }}</{{ tag }}>
-        {% endif %}
+{% block hero_section %}
+{% include 'blocks/hero_section.html' %}
+{% endblock %}
 
-        {% if elem[0] == 'text' %}
-          {% set content = elem[1].content %}
-        <p>{{ content }}</p>
-        {% endif %}
+{% block advantages %}
+{% include 'blocks/advantages.html' %}
+{% endblock %}
 
-        {% if elem[0] == 'list' %}
-          {% set label = elem[1].label %}
-          {% set content = elem[1].content %}
-          {% set rows = elem[1].rows %}
-        <div class="container">
-          <div>
-            <label>{{ label }}</label>
-          </div>
-          <ul>
-          {% for row in range(rows) %}
-            {% if content %}
-              {% set content = content[row] %}
-            {% else %}
-              {% set content = '' %}
-            {% endif %}
-            <li>
-              {{ content }}
-            </li>
-          {% endfor %}
-          </ul>
-        </div>
-        {% endif %}
+{% block content %}
+{% include 'blocks/content.html' %}
+{% endblock %}
 
-        {% if elem[0] == 'table' %}
-          {% set table_content = elem[1].content %}
-          {% set rows = elem[1].rows %}
-          {% set columns = elem[1].columns %}
-        <table class="table_main">
-          <tbody>
-          {% for row in range(rows) %}
-            <tr>
-            {% for col in range(columns) %}
-              {% if table_content[row][col] %}
-                {% set content = table_content[row][col]['value'] %}
-              {% else %}
-              {% continue %}
-              {% endif %}
-              {% if 'colspan' in table_content[row][col] %}
-                {% set colspan = table_content[row][col]['colspan'] %}
-              {% else %}
-                {% set colspan = 1 %}
-              {% endif %}
-              {% if 'rowspan' in table_content[row][col] %}
-                {% set rowspan = table_content[row][col]['rowspan'] %}
-              {% else %}
-                {% set rowspan = 1 %}
-              {% endif %}
-              {% if row == 0 %}
-              <td class="thead" colspan="{{ colspan }}" rowspan="{{ rowspan }}">{{ content }}</td>
-              {% else %}
-              <td colspan="{{ colspan }}" rowspan="{{ rowspan }}">{{ content }}</td>
-              {% endif %}
-            {% endfor %}
-            </tr>
-          {% endfor %}
-          </tbody>
-        </table>
-        {% endif %}
-      {% endfor %}
-      </div>
-    </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="/static/js/bootstrap.min.js"></script>
-</body>
-</html>
+{% block scripts %}
+{% include 'blocks/scripts.html' %}
+{% endblock %}

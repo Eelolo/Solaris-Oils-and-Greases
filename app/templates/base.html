@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% block head %}{% endblock %}
+</head>
+<body>
+  {% block navigation %}{% endblock %}
+  {% block hero_section %}{% endblock %}
+  <div class="container">
+    <div class="main main-raised">
+      {% block advantages %}{% endblock %}
+      {% block content %}{% endblock %}
+    </div>
+  </div>
+{% block scripts %}{% endblock %}
+</body>
+</html>

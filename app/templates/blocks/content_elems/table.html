@@ -1,0 +1,37 @@
+{% block table %}
+
+{% set table_content = table.content %}
+{% set rows = table.rows %}
+{% set columns = table.columns %}
+<table class="table_main">
+  <tbody>
+  {% for row in range(rows) %}
+    <tr>
+    {% for col in range(columns) %}
+      {% if table_content[row][col] %}
+        {% set content = table_content[row][col]['value'] %}
+      {% else %}
+      {% continue %}
+      {% endif %}
+      {% if 'colspan' in table_content[row][col] %}
+        {% set colspan = table_content[row][col]['colspan'] %}
+      {% else %}
+        {% set colspan = 1 %}
+      {% endif %}
+      {% if 'rowspan' in table_content[row][col] %}
+        {% set rowspan = table_content[row][col]['rowspan'] %}
+      {% else %}
+        {% set rowspan = 1 %}
+      {% endif %}
+      {% if row == 0 %}
+      <td class="thead" colspan="{{ colspan }}" rowspan="{{ rowspan }}">{{ content }}</td>
+      {% else %}
+      <td colspan="{{ colspan }}" rowspan="{{ rowspan }}">{{ content }}</td>
+      {% endif %}
+    {% endfor %}
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

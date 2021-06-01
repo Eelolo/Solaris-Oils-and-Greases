@@ -1,0 +1,55 @@
+{% block navigation %}
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="{{ url_for('main.index') }}">Солярис</a>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ url_for('main.index') }}">Главная<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown catalog">
+        <a class="nav-link active dropdown-active" id="navbarDropdownMenuLink">
+          Каталог
+        </a>
+        <div class="dropdown-menu catalog-menu" aria-labelledby="navbarDropdownMenuLink">
+          <div class="row">
+            <div class="col">
+              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'aviation_oils') }}">Авиационные масла</a>
+              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'industrial_oils') }}">Индустриальные масла</a>
+              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'vacuum_oils') }}">Вакуумные масла</a>
+              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'engine_oils') }}">Моторные масла</a>
+            </div>
+            <div class="col">
+              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'instrument_oils') }}">Приборные масла</a>
+              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'ships_oils') }}">Судовые масла</a>
+              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'transmission_oils') }}">Трансмиссионые масла</a>
+              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'hydraulic_oils') }}">Гидравлические масла</a>
+            </div>
+            <div class="col">
+              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'cable_and_transformer_oils') }}">Кабельные и трансформаторные масла</a>
+              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'turbine_oils') }}">Турбинные масла</a>
+              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'compressor_oils') }}">Компрессорные масла</a>
+              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'greases') }}">Смазки</a>
+            </div>
+            <div class="col">
+              <a class="dropdown-item" href="{{ url_for('main.site_page', page_name = 'special_liquids') }}">Специльные жидкости</a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ url_for('main.site_page', page_name = 'price_list') }}">Прайс-лист</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link">Контакты</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ url_for('main.site_page', page_name = 'partner_card') }}">Карта партнера</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Поиск" aria-label="Search">
+      <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Поиск</button>
+    </form>
+  </div>
+</nav>
+{% endblock %}

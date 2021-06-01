@@ -1,0 +1,24 @@
+{% block list %}
+
+{% set label = list.label %}
+{% set content = list.content %}
+{% set rows = list.rows %}
+<div class="container">
+  <div>
+    <label>{{ label }}</label>
+  </div>
+  <ul>
+  {% for row in range(rows) %}
+    {% if content %}
+      {% set content = content[row] %}
+    {% else %}
+      {% set content = '' %}
+    {% endif %}
+    <li>
+      {{ content }}
+    </li>
+  {% endfor %}
+  </ul>
+</div>
+
+{% endblock %}
