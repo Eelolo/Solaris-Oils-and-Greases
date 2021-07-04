@@ -8,6 +8,8 @@ def create_page(name):
     db.session.add(page)
     db.session.commit()
 
+    return page
+
 
 def get_page(page_id):
     page = Pages.query.filter_by(id=page_id).first()

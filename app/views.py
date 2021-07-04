@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect
+from flask import Blueprint, render_template, redirect, jsonify, request
 from .models import Headers, Text, Tables, Pages, Lists
 from .crud.tables import load_table_content
 from .crud.lists import load_list_content
@@ -10,6 +10,12 @@ main_bp = Blueprint('main', __name__)
 @main_bp.route('/')
 def index():
     return render_template('index_page.html')
+
+@main_bp.route('/_add_numbers')
+def add_numbers():
+    a = request.args.get('a', 0, type=int)
+    b = request.args.get('b', 0, type=int)
+    return jsonify(result=a + b)
 
 
 @main_bp.route('/<page_name>/')

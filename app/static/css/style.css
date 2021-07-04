@@ -160,11 +160,14 @@ li.dropdown:hover > .dropdown-menu {
 }
 
 .thead {
-    background: rgb(113, 98, 47);
+  background: rgb(113, 98, 47);
+}
+.thead > td, th {
+  border-color: rgb(42, 48, 54) !important;
 }
 
 .table_main {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .nav-link{
@@ -266,3 +269,185 @@ input[type=search]:focus, textarea:focus {
 body {
     background: rgb(42, 48, 54);
 }
+
+.table_admin {
+    text-align: center;
+}
+
+.table_admin th, td {
+    color: rgb(200, 200, 200);
+    border-color: rgb(113, 98, 47) !important;
+}
+
+.table_admin thead {
+    background: rgb(113, 98, 47);
+}
+
+
+.id_col {
+    width: 100px;
+}
+
+.btn_col {
+    width: 230px;
+}
+
+.btn_cell button {
+    color: rgb(200, 200, 200);
+    border-color: rgb(200, 200, 200);
+    margin-left: 10px;
+}
+
+.btn_cell button:hover {
+    color: rgb(255, 193, 7);
+    border-color: rgb(255, 193, 7);
+}
+
+.admin-input {
+    background: rgb(52, 58, 64);
+    border-color: rgb(200, 200, 200);
+    color: rgb(200, 200, 200);
+    width: 300px;
+    text-align: center;
+    display: block;
+    margin: 0 auto 15px;
+}
+
+.admin-input:focus {
+    background: rgb(42, 48, 54);
+    border-color: rgb(255, 193, 7);
+    color: rgb(200, 200, 200);
+    box-shadow: 0 0 5px rgba(214, 166, 19, 1);
+    border: 1px solid rgba(214, 166, 19, 1);
+}
+
+.create_btn {
+    float: left;
+}
+
+.admin-select {
+  background: rgb(52, 58, 64);
+  border-color: rgb(200, 200, 200);
+  color: rgb(200, 200, 200);
+  width: 300px;
+  display: block;
+  margin: 0 auto 15px;
+}
+
+.admin-select:focus {
+  background: rgb(42, 48, 54);
+  border-color: rgb(255, 193, 7);
+  color: rgb(200, 200, 200);
+  box-shadow: 0 0 5px rgba(214, 166, 19, 1);
+  border: 1px solid rgba(214, 166, 19, 1);
+}
+
+.admin-textarea {
+  background: rgb(52, 58, 64);
+  border-color: rgb(200, 200, 200);
+  color: rgb(200, 200, 200);
+  width: 700px;
+  display: block;
+  margin: 0 auto 15px;
+}
+
+.admin-textarea:focus {
+  background: rgb(42, 48, 54);
+  border-color: rgb(255, 193, 7);
+  color: rgb(200, 200, 200);
+  box-shadow: 0 0 5px rgba(214, 166, 19, 1);
+  border: 1px solid rgba(214, 166, 19, 1);
+}
+
+.form-cols {
+  margin: 0 auto;
+  width: 800px;
+  padding-bottom: 5px;
+}
+
+.list_tr {
+  text-align: left;
+}
+
+.list-input {
+  margin-left: -25px;
+  text-align: left;
+}
+
+li .list-input {
+  margin-left: 0;
+  text-align: left;
+  border: 0;
+}
+
+ul {
+  text-align: left;
+}
+
+#list_label {
+  display: block;
+  text-align: left;
+}
+
+.admin-list {
+  margin-bottom: 50px;
+}
+
+#add_row{
+  margin-top: 15px;
+}
+#delete_row {
+  margin-top: 15px;
+}
+
+.list-textarea {
+  margin: 0;
+}
+
+.admin-list li:hover::marker {
+  color: rgb(255, 193, 7);
+}
+
+#list_label:hover {
+  text-decoration: underline;
+  text-decoration-color: rgb(255, 193, 7);
+}
+
+.reduced_width {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.table_look td {
+  padding: 0;
+  vertical-align: middle;
+}
+
+.table_look tr td th {
+  text-align: center;
+}
+
+.table-textarea {
+  margin: 0;
+  text-align: center;
+  white-space: pre-line;
+}
+
+.inline {
+  display: inline-block;
+}
+
+.spans_row {
+  margin: 0 auto;
+}
+
+.spans_row .admin-input {
+  width: 100px;
+  height: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+
+
+

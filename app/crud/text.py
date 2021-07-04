@@ -8,6 +8,7 @@ def create_text(content, page_id, page_index):
     db.session.add(text)
     db.session.commit()
 
+    return text
 
 def get_text(text_id):
     text = Text.query.filter_by(id=text_id).first()
@@ -26,7 +27,7 @@ def get_text_data():
 
     data = []
     for text in texts:
-        data.append((text.id, text.content, text.page_id, text.page_index))
+        data.append([text.id, text.content, text.page_id, text.page_index])
 
     return data
 
@@ -38,6 +39,8 @@ def update_text(text_id, **kwargs):
         setattr(text, key, value)
 
     db.session.commit()
+
+    return text
 
 
 def delete_text(text_id):

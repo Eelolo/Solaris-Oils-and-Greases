@@ -10,6 +10,8 @@ def create_table(content, rows, columns, page_id, page_index):
     db.session.add(table)
     db.session.commit()
 
+    return table
+
 
 def get_table(table_id):
     table = Tables.query.filter_by(id=table_id).first()
@@ -41,27 +43,11 @@ def get_tables_data():
         content = load_table_content(table)
 
         data.append(
-            (
+            [
                 table.id, content, table.rows, table.columns,
                 table.page_id, table.page_index
-            )
+            ]
         )
-
-    return data
-
-
-def get_table_from_form(form):
-    rows = int(form.get('rows'))
-    cols = int(form.get('columns'))
-
-    data = []
-    for row in range(rows):
-        data.append([])
-        for col in range(cols):
-            if not form.get(f'cell-{row}-{col}') and form.get(f'cell-{row}-{col}') != '':
-                data[row].append('')
-            else:
-                data[row].append(form.get(f'cell-{row}-{col}'))
 
     return data
 
@@ -87,9 +73,13 @@ def update_table(table_id, **kwargs):
 
     db.session.commit()
 
+    return table
+
 
 def delete_table(table_id):
     table = get_table(table_id)
 
     db.session.delete(table)
     db.session.commit()
+
+    return table

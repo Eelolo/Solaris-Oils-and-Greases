@@ -8,6 +8,7 @@ def create_header(tag, content, page_id, page_index):
     db.session.add(header)
     db.session.commit()
 
+    return header
 
 def get_header(header_id):
     header = Headers.query.filter_by(id=header_id).first()
@@ -38,6 +39,7 @@ def update_header(header_id, **kwargs):
 
     db.session.commit()
 
+    return header
 
 def delete_header(header_id):
     header = get_header(header_id)
