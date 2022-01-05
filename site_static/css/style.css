@@ -211,6 +211,7 @@ li.dropdown:hover > .dropdown-menu {
 
 .dropdown-item:active {
     background-color: rgb(214, 166, 19);
+    background-color: red;
 }
 
 body {
