@@ -1,4 +1,5 @@
 {% block scripts %}
+{% load static %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="/site_static/js/bootstrap_js/bootstrap.min.js"></script>
+<script src="{% static 'js/bootstrap_js/bootstrap.min.js' %}"></script>
 {% endblock %}
