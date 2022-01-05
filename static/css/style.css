@@ -81,9 +81,9 @@ li.dropdown:hover > .dropdown-menu {
     outline-offset: -10px;
 }
 
-.brand{
+/*.brand{
     width: 60%;
-}
+}*/
 
 .main {
     position: relative;
@@ -211,4 +211,8 @@ li.dropdown:hover > .dropdown-menu {
 
 .dropdown-item:active {
     background-color: rgb(214, 166, 19);
+}
+
+body {
+    background-color: rgb(52,58,64) !important;
 }
