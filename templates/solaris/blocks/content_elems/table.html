@@ -1,0 +1,24 @@
+{% load continue_operator %}
+
+{% block table %}
+
+<table class="table_main">
+  <tbody>
+  {% for row in table %}
+    <tr>
+    {% for cell in row %}
+      {% if cell.spanned %}
+        {{ forloop|continue }}
+      {% endif %}
+      {% if cell.thead %}
+      <td class="thead" colspan="{{ cell.col_span }}" rowspan="{{ cell.row_span }}">{{ cell.content }}</td>
+      {% else %}
+      <td colspan="{{ cell.col_span }}" rowspan="{{ cell.row_span }}">{{ cell.content }}</td>
+      {% endif %}
+    {% endfor %}
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

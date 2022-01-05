@@ -1,0 +1,35 @@
+{% block content %}
+
+<div class="content">
+  <div class="container">
+  {% for elem in data %}
+
+    {% if elem.0 == 'header' %}
+      {% with header=elem.1 %}
+      {% include "solaris/blocks/content_elems/header.html" %}
+      {% endwith %}
+    {% endif %}
+
+    {% if elem.0 == 'text' %}
+      {% with text=elem.1 %}
+      {% include 'solaris/blocks/content_elems/text.html' %}
+      {% endwith %}
+    {% endif %}
+
+    {% if elem.0 == 'list' %}
+      {% with list=elem.1 %}
+      {% include 'solaris/blocks/content_elems/list.html' %}
+      {% endwith %}
+    {% endif %}
+
+    {% if elem.0 == 'table' %}
+      {% with table=elem.1 %}
+      {% include 'solaris/blocks/content_elems/table.html' %}
+      {% endwith %}
+    {% endif %}
+
+  {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% block list %}
+
+{% with label=list.label %}
+{% with content=list.content %}
+<div class="container">
+  <div>
+    <label>{{ label }}</label>
+  </div>
+  <ul>
+  {% for row in content %}
+    {% if row %}
+      <li>
+        {{ row }}
+      </li>
+    {% else %}
+      <li></li>
+    {% endif %}
+  {% endfor %}
+  </ul>
+</div>
+{% endwith %}
+{% endwith %}
+
+{% endblock %}

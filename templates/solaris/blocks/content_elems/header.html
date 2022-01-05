@@ -1,0 +1,11 @@
+{% block header %}
+
+{% with tag=header.tag %}
+{% with content=header.content %}
+
+<{{ tag }}>{{ content }}</{{ tag }}>
+
+{% endwith %}
+{% endwith %}
+
+{% endblock %}

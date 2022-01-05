@@ -1,0 +1,66 @@
+[
+    {
+        "id": 1,
+        "name": "greases"
+    },
+    {
+        "id": 2,
+        "name": "aviation_oils"
+    },
+    {
+        "id": 3,
+        "name": "cable_and_transformer_oils"
+    },
+    {
+        "id": 4,
+        "name": "compressor_oils"
+    },
+    {
+        "id": 5,
+        "name": "hydraulic_oils"
+    },
+    {
+        "id": 6,
+        "name": "industrial_oils"
+    },
+    {
+        "id": 7,
+        "name": "engine_oils"
+    },
+    {
+        "id": 8,
+        "name": "instrument_oils"
+    },
+    {
+        "id": 9,
+        "name": "price_list"
+    },
+    {
+        "id": 10,
+        "name": "ships_oils"
+    },
+    {
+        "id": 11,
+        "name": "special_liquids"
+    },
+    {
+        "id": 12,
+        "name": "transmission_oils"
+    },
+    {
+        "id": 13,
+        "name": "turbine_oils"
+    },
+    {
+        "id": 14,
+        "name": "vacuum_oils"
+    },
+    {
+        "id": 15,
+        "name": "partner_card"
+    },
+    {
+        "id": 16,
+        "name": "123"
+    }
+]

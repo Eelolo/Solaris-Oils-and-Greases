@@ -1,40 +1,22 @@
-from app import create_app
-from app import db
-from app.models import Pages, Headers, Text, Lists, Tables
-import click
+#!/usr/bin/env python
+"""Django's command-line utility for administrative tasks."""
+import os
+import sys
 
 
-app = create_app()
-
-
-@click.group()
-def cli():
-    pass
-
-
-@click.command('create-db')
-def create_db():
-    app.app_context().push()
-    db.create_all()
-    print('All tables created')
-
-
-@click.command('drop-db')
-def drop_db():
-    app.app_context().push()
-    db.drop_all()
-    print('All tables deleted')
-
-
-@click.command('run')
-def run():
-    app.run(debug=True)
-
-
-cli.add_command(create_db)
-cli.add_command(drop_db)
-cli.add_command(run)
+def main():
+    """Run administrative tasks."""
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'solaris_website.settings')
+    try:
+        from django.core.management import execute_from_command_line
+    except ImportError as exc:
+        raise ImportError(
+            "Couldn't import Django. Are you sure it's installed and "
+            "available on your PYTHONPATH environment variable? Did you "
+            "forget to activate a virtual environment?"
+        ) from exc
+    execute_from_command_line(sys.argv)
 
 
 if __name__ == '__main__':
-    cli()
+    main()
