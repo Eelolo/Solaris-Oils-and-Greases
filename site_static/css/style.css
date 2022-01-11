@@ -93,13 +93,17 @@ li.dropdown:hover > .dropdown-menu {
     }
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (max-width: 1200px) {
     .advantage h4 {
         font-size: 19px !important;
     }
 
     .advantage-0 img, .advantage-1 img, .advantage-2 img, .advantage-3 img {
         margin: 0 15px 0 0 !important;
+    }
+
+    a.nav-link {
+      font-size: 18px;
     }
 }
 
