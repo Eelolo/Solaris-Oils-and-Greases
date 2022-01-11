@@ -93,6 +93,16 @@ li.dropdown:hover > .dropdown-menu {
     }
 }
 
+@media screen and (max-width: 991px) {
+    .advantage h4 {
+        font-size: 19px !important;
+    }
+
+    .advantage-0 img, .advantage-1 img, .advantage-2 img, .advantage-3 img {
+        margin: 0 15px 0 0 !important;
+    }
+}
+
 .dropdown a {
     color: rgb(255, 255, 255);
 }
