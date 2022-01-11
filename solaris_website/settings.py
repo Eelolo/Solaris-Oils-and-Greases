@@ -37,7 +37,7 @@ def get_env_variable(var_name, default=None):
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = ['89.179.124.46', 'eelolo-server', 'localhost', '127.0.0.1']
 
