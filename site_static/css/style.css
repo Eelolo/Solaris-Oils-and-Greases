@@ -97,6 +97,10 @@ li.dropdown:hover > .dropdown-menu {
     color: rgb(255, 255, 255);
 }
 
+button.navbar-toggler {
+  border-color: rgb(255, 193, 7) !important;
+}
+
 .page-header h1 {
     text-align: center;
     color: white;
