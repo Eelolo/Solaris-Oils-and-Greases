@@ -4,6 +4,7 @@ from django_jsonform.models.fields import ArrayField
 
 class Page(models.Model):
     name = models.CharField(max_length=100, blank=True, default='')
+    title = models.CharField(max_length=100, blank=True, default='')
 
     def __str__(self):
         return f"Page {self.name}"

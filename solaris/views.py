@@ -66,4 +66,5 @@ class SitePageView(TemplateView):
                 data.append(('table', elem))
 
         context['data'] = data
+        context['page_title'] = page.title
         return self.render_to_response(context)
