@@ -1,6 +1,9 @@
 from django.views.generic.base import TemplateView
-from .models import Page, Header, Text, List, Table, TableCell
+from django.http import HttpResponse
 from django.db.models import Prefetch
+from django.conf import settings
+from .models import Page, Header, Text, List, Table, TableCell
+import os
 
 
 class IndexPageView(TemplateView):
@@ -27,6 +30,11 @@ class SitePageView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
+
+        if context['page_name'] == 'favicon.ico':
+            print(settings.BASE_DIR)
+            image_data = open(os.path.join(settings.BASE_DIR, 'static/imgs/favicon.ico'), 'rb').read()
+            return HttpResponse(image_data)  # , mimetype="image/png"
 
         page = Page.objects.filter(name=context['page_name'])\
             .prefetch_related('headers')\
