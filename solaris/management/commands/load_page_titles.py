@@ -4,6 +4,7 @@ from solaris.models import Page
 
 class Command(BaseCommand):
     page_titles = {
+        'index_page': 'Главная',
         'partner_card': 'Карта партнера',
         'vacuum_oils': 'Вакуумные масла',
         'turbine_oils': 'Турбинные масла',

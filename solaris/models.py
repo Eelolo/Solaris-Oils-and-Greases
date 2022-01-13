@@ -6,6 +6,9 @@ class Page(models.Model):
     name = models.CharField(max_length=100, blank=True, default='')
     title = models.CharField(max_length=100, blank=True, default='')
 
+    nav_page = models.BooleanField(default=False)
+    catalog_page = models.BooleanField(default=False)
+
     def __str__(self):
         return f"Page {self.name}"
 

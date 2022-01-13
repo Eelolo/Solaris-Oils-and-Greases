@@ -75,4 +75,6 @@ class SitePageView(TemplateView):
 
         context['data'] = data
         context['page_title'] = page.title
+        context['nav_pages'] = Page.objects.filter(nav_page=True)
+        context['catalog_pages'] = Page.objects.filter(catalog_page=True)
         return self.render_to_response(context)
