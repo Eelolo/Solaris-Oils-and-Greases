@@ -1,4 +1,3 @@
-
 {% block navigation %}
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
@@ -9,18 +8,28 @@
     <div class="collapse navbar-collapse" id="to_collapse">
       <ul class="navbar-nav mr-auto">
         {% for page in nav_pages %}
-        <li class="nav-item active">
-          <a class="nav-link" href="{% url 'site_page' page_name=page.name %}">{{ page.title }}</a>
-        </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'site_page' page_name=page.name %}">{{ page.title }}</a>
+          </li>
         {% endfor %}
         <li class="nav-item dropdown catalog">
           <a class="nav-link active dropdown-active" id="navbarDropdownMenuLink">
             Каталог
           </a>
           <div class="dropdown-menu catalog-menu" aria-labelledby="navbarDropdownMenuLink">
-          {% for page in catalog_pages %}
-            <a class="dropdown-item" href="{% url 'site_page' page_name=page.name %}">{{ page.title }}</a>
-          {% endfor %}
+            <div class="row">
+              <div class="col">
+                {% for page in catalog_pages %}
+                  {% if forloop.counter0|divisibleby:'4' and forloop.counter0 != 0 %}
+                    </div>
+                    <div class="col">
+                      <a class="dropdown-item" href="{% url 'site_page' page_name=page.name %}">{{ page.title }}</a>
+                  {% else %}
+                      <a class="dropdown-item" href="{% url 'site_page' page_name=page.name %}">{{ page.title }}</a>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
           </div>
         </li>
       </ul>
