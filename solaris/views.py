@@ -30,13 +30,15 @@ class SitePageView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
-
-        if context['page_name'] == 'favicon.ico':
-            print(settings.BASE_DIR)
+        if 'page_name' not in context.keys():
+            page_name = 'index_page'
+        elif context['page_name'] == 'favicon.ico':
             image_data = open(os.path.join(settings.BASE_DIR, 'static/imgs/favicon.ico'), 'rb').read()
             return HttpResponse(image_data)  # , mimetype="image/png"
+        else:
+            page_name = context['page_name']
 
-        page = Page.objects.filter(name=context['page_name'])\
+        page = Page.objects.filter(name=page_name)\
             .prefetch_related('headers')\
             .prefetch_related('text')\
             .prefetch_related('lists')\
@@ -75,6 +77,9 @@ class SitePageView(TemplateView):
 
         context['data'] = data
         context['page_title'] = page.title
-        context['nav_pages'] = Page.objects.filter(nav_page=True)
-        context['catalog_pages'] = sorted(list(Page.objects.filter(catalog_page=True)), key=lambda x: len(x.title))
+        context['nav_pages'] = Page.objects.filter(nav_page=True).exclude(name='index_page')
+        context['catalog_pages'] = Page.objects.filter(catalog_page=True)
+        context['catalog_pages'] = sorted(list(context['catalog_pages']), key=lambda x: len(x.title))
+        context['catalog_pages'].sort(key=lambda x: len(x.title))
+        # context['catalog_pages'] = context['catalog_pages'].sort(key=lambda x: x.title == 'Каталог')
         return self.render_to_response(context)

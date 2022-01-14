@@ -7,11 +7,9 @@
     </button>
     <div class="collapse navbar-collapse" id="to_collapse">
       <ul class="navbar-nav mr-auto">
-        {% for page in nav_pages %}
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'site_page' page_name=page.name %}">{{ page.title }}</a>
-          </li>
-        {% endfor %}
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'index_page' %}">Главная</a>
+        </li>
         <li class="nav-item dropdown catalog">
           <a class="nav-link active dropdown-active" id="navbarDropdownMenuLink">
             Каталог
@@ -32,6 +30,11 @@
             </div>
           </div>
         </li>
+        {% for page in nav_pages %}
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'site_page' page_name=page.name %}">{{ page.title }}</a>
+          </li>
+        {% endfor %}
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Поиск" aria-label="Search">
